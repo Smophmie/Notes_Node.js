@@ -14,11 +14,15 @@ app.use(express.static('public'));
 
 // Templating Engine
 app.use(expressLayouts);
-app.set('layouts', './layouts/main');
+app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-    res.render('index');
+    const locals = {
+        title: "Notes NodeJS",
+        description: "Application de notes sous NodeJS"
+    }
+    res.render('index', locals);
 })
 
 app.listen(port, ()=>{
